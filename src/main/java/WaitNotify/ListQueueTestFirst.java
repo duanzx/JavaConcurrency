@@ -7,23 +7,21 @@ import java.util.List;
  * Created by duanzx on 2018/5/11.
  */
 public class ListQueueTestFirst {
-    //Wait方法释放锁，Notify方法不释放锁
+    //Wait
     private volatile static List<Integer> queueList = new ArrayList<Integer>();
 
     public synchronized void addQueue(int ele) {
         queueList.add(ele);
-        System.out.println("---已经添加了 " + queueList.size() + " 元素------");
+        System.out.println("--- " + queueList.size() + " ------");
     }
 
     public int getListSize(){
         return queueList.size();
     }
 
-    //如何使用线程池创建线程！！！！！！！！
+    //
     public static void main(String[] args) throws Exception {
-        //t1线程负责向 queueList里添加元素
-        //t2.负责监听t1，当添加到元素的个数等于5时，t2需要通知t1,停止添加元素
-        //最终模式：使用list模拟一个队列！！！！！！！！！！
+
 
         final ListQueueTestFirst listQueueTestFirst = new ListQueueTestFirst();
         Thread t1 = new Thread(new Runnable() {
@@ -32,7 +30,7 @@ public class ListQueueTestFirst {
                 try {
                     for (int x = 0; x < 10; x++) {
                         listQueueTestFirst.addQueue(x);
-                        System.out.println("当前线程：" + Thread.currentThread().getName() + "添加了一个元素");
+                        System.out.println("" + Thread.currentThread().getName() + "");
                         Thread.sleep(1000);
                     }
                 } catch (InterruptedException e) {
@@ -46,7 +44,7 @@ public class ListQueueTestFirst {
             public void run() {
                 while (true){
                     if(listQueueTestFirst.getListSize()==5){
-                        throw new RuntimeException("当前线程：" + Thread.currentThread().getName() +" 停止t1线程！！！！！！！！！");
+                        throw new RuntimeException("锟斤拷前锟竭程ｏ拷" + Thread.currentThread().getName() +" 停止t1锟竭程ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷");
                     }
                 }
             }

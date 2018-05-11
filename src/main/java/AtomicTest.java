@@ -26,7 +26,7 @@ public class AtomicTest extends Thread{
             atomicInteger.addAndGet(1);
             atomicInteger.addAndGet(2);
             atomicInteger.addAndGet(3);
-            atomicInteger.addAndGet(4);//保证不了原子性
+            atomicInteger.addAndGet(4);//
             System.out.println(atomicInteger.get());
         }
     }

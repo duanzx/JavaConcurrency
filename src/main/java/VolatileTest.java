@@ -28,7 +28,7 @@ public class VolatileTest extends Thread {
         VolatileTest volatileTest = new VolatileTest();
         volatileTest.start();
         Thread.sleep(3000);
-        volatileTest.setRunning(false); // 此时 volatile线程并没有结束，并且线程里的runing=true，没有改变
+        volatileTest.setRunning(false); //
         System.out.println("set runing = false");
 //        Thread.sleep(1000);
 //        System.out.println(volatileTest.running);
