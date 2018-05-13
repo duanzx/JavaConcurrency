@@ -45,11 +45,42 @@ public class PriorityBlockingQueueTest {
         queue.offer(task1);
         queue.offer(task2);
         queue.offer(task3);
-        for (int x = 0; x < 3; x++) {
-            Task task = queue.take();
-            System.out.println(task.getId() + "-" + task.getName());//take时有优先级
-        }
-
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Task task = null;
+                try {
+                    task = queue.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(task.getId() + "-" + task.getName());//take时有优先级
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Task task = null;
+                try {
+                    task = queue.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(task.getId() + "-" + task.getName());//take时有优先级
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Task task = null;
+                try {
+                    task = queue.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(task.getId() + "-" + task.getName());//take时有优先级
+            }
+        }).start();
 
     }
 }
