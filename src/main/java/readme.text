@@ -1,0 +1,13 @@
+//解释以上各个容器的特点，实现原理
+ConcurrentLinkedQueue
+ConcurrentHashMap
+
+ArrayBlockingQueue
+LinkedBlockingQueue
+PriorityBlockingQueue
+DelayQueue
+SynchronousQueue
+
+CopyOnWriteArrayList
+
+
