@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by duanzx on 2018/5/11.
  */
 public class ListQueueTestFirstOne {
-    private final LinkedList<Object> list = new LinkedList<>();
+    private final LinkedList<Object> list = new LinkedList<Object>();
     private final int MIN_SIZE = 0;
     private final int MAX_SIZE;
     private AtomicInteger atomicInteger = new AtomicInteger(0);

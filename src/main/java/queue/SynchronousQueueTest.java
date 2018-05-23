@@ -5,7 +5,7 @@ import java.util.concurrent.SynchronousQueue;
 public class SynchronousQueueTest {
     //线程配对通信
     public static void main(String[] args) throws Exception {
-        final SynchronousQueue<String> stringSynchronousQueue = new SynchronousQueue<>();
+        final SynchronousQueue<String> stringSynchronousQueue = new SynchronousQueue<String>();
         new Thread(new Runnable() {
             @Override
             public void run() {

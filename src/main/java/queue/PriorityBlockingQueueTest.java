@@ -9,7 +9,6 @@ public class PriorityBlockingQueueTest {
         private String name;
         private int id;
 
-        @Override
         public int compareTo(Task o) {
             return this.id > o.id ? 1 : (this.id == o.id ? 0 : -1);
         }
@@ -41,7 +40,7 @@ public class PriorityBlockingQueueTest {
         Task task3 = new Task();
         task3.setId(3);
         task3.setName("task3");
-        PriorityBlockingQueue<Task> queue = new PriorityBlockingQueue<>(5);
+        PriorityBlockingQueue<Task> queue = new PriorityBlockingQueue<Task>(5);
         queue.offer(task1);
         queue.offer(task2);
         queue.offer(task3);
