@@ -35,7 +35,11 @@ public ThreadPoolExecutor(int corePoolSize,//核心线程数量
                                   TimeUnit unit,
                                   BlockingQueue<Runnable> workQueue,
                                   RejectedExecutionHandler handler) { //当线程达到最大数量，缓存队列已满，时候的饱和策略
-     AbortPolicy
-     DiscardPolicy
-     DiscardOldestPolicy
-     CallerRunsPolicy
+     AbortPolicy :直接抛出运行时异常，系统正常工作
+     DiscardPolicy：丢弃无法处理的任务，不给予任何处理
+     DiscardOldestPolicy：丢弃最老的一个请求，尝试再次提交当前任务。
+     CallerRunsPolicy：只要线程池未关闭，该策略直接在调用者线程中，运行当前被丢弃的任务。
+
+     有界队列： 每次按照maxSize批量执行
+     无界队列：每次按照coreSize批量执行。
+
