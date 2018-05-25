@@ -10,24 +10,25 @@ public class SynchronousQueueTest {
             @Override
             public void run() {
                 try {
-                    stringSynchronousQueue.put("a");
-                    System.out.println("start put a");
+                    System.out.println("start take a");
+                    System.out.println(stringSynchronousQueue.take());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("end put a");
+                System.out.println("end take a");
             }
         }).start();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    System.out.println(stringSynchronousQueue.take());
-                    System.out.println("start take a");
+                    Thread.sleep(5000);
+                    stringSynchronousQueue.put("a");
+                    System.out.println("start put a");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("end take a");
+                System.out.println("end put a");
             }
         }).start();
     }
