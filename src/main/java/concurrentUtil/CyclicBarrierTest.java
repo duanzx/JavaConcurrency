@@ -8,6 +8,9 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by duanzx on 2018/5/25.
+ * await 等待被唤醒
+ * wait 阻塞等待
+ * 只有所有的线程都准备OK，才接下来执行
  */
 public class CyclicBarrierTest {
     static class Runner implements Runnable {
@@ -37,9 +40,9 @@ public class CyclicBarrierTest {
     public static void main(String[] args) throws Exception {
        final CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
         ExecutorService executorService = Executors.newFixedThreadPool(3);
-        executorService.submit(new Thread(new Runner(cyclicBarrier, "runner-one")));
-        executorService.submit(new Thread(new Runner(cyclicBarrier, "runner-two")));
-        executorService.submit(new Thread(new Runner(cyclicBarrier, "runner-three")));
+        executorService.submit(new Runner(cyclicBarrier, "runner-one"));
+        executorService.submit(new Runner(cyclicBarrier, "runner-two"));
+        executorService.submit(new Runner(cyclicBarrier, "runner-three"));
         executorService.shutdown();
     }
 }
