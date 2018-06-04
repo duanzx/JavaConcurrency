@@ -2,7 +2,7 @@ package disruptor.bean;
 
 import java.io.Serializable;
 
-public class Event implements Serializable {
+public class LongEvent implements Serializable {
     private static final long serialVersionUID = -3032386760246096011L;
     private Long value;
 
