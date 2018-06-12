@@ -19,6 +19,7 @@ public class ListQueueCompletableFuture {
         return queueList.size();
     }
 
+    //    Future是Java 5添加的类，用来描述一个异步计算的结果。你可以使用isDone方法检查计算是否完成，或者使用get阻塞住调用线程，直到计算完成返回结果，你也可以使用cancel方法停止任务的执行
     public static void main(String[] args) throws Exception {
         ListQueueCompletableFuture listQueueCompletableFuture = new ListQueueCompletableFuture();
     }
