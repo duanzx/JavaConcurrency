@@ -1,7 +1,6 @@
-package disruptor;
+package disruptor.basic;
 
 import com.lmax.disruptor.RingBuffer;
-import disruptor.bean.LongEvent;
 
 import java.nio.ByteBuffer;
 

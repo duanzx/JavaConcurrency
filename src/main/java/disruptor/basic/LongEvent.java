@@ -1,4 +1,4 @@
-package disruptor.bean;
+package disruptor.basic;
 
 import java.io.Serializable;
 

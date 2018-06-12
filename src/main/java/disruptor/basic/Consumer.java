@@ -1,4 +1,4 @@
-package disruptor;
+package disruptor.basic;
 
 public class Consumer {
 }

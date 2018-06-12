@@ -1,14 +1,10 @@
-package disruptor;
+package disruptor.basic;
 
 import com.lmax.disruptor.EventFactory;
 import com.lmax.disruptor.RingBuffer;
-import com.lmax.disruptor.WaitStrategy;
 import com.lmax.disruptor.YieldingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
-import disruptor.bean.LongEvent;
-import disruptor.bean.LongEventFactory;
-import disruptor.handler.LongEventHandler;
 
 import java.nio.ByteBuffer;
 import java.util.concurrent.ExecutorService;
@@ -26,9 +22,10 @@ public class DisruptorMain {
         EventFactory<LongEvent> eventFactory = new LongEventFactory();
         ExecutorService executorService = Executors.newCachedThreadPool();
         Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(eventFactory, 1024 * 1024, executorService, ProducerType.SINGLE, new YieldingWaitStrategy());
-        //注册监听事件
+        //注册Consumer
         disruptor.handleEventsWith(new LongEventHandler());
         disruptor.start();
+        //生产EVENT
         RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
         LongEventProducer producer = new LongEventProducer(ringBuffer);
         ByteBuffer byteBuffer = ByteBuffer.allocate(8);
@@ -38,6 +35,7 @@ public class DisruptorMain {
         }
         disruptor.shutdown();
         executorService.shutdown();
-
     }
+
+
 }

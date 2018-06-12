@@ -1,7 +1,6 @@
-package disruptor.handler;
+package disruptor.basic;
 
 import com.lmax.disruptor.EventHandler;
-import disruptor.bean.LongEvent;
 
 public class LongEventHandler implements EventHandler<LongEvent> {
     @Override
