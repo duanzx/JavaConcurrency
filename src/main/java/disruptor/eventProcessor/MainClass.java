@@ -15,7 +15,7 @@ public class MainClass {
             }
         }, 1024 * 1024);
         ringBuffer.newBarrier();
-        BatchEventProcessor<Trade> batchEventProcessor = new BatchEventProcessor<>(ringBuffer)
+//        BatchEventProcessor<Trade> batchEventProcessor = new BatchEventProcessor<>(ringBuffer);
 
     }
 }
