@@ -33,6 +33,7 @@ public class ServerClass implements Runnable {
     public void run() {
         while (true) {
             try {
+                //接收已经注册到Selector的SlectionKey
                 selector.select();
                 System.out.println("已经监听完成某个客户端对应的事件");
                 Iterator<SelectionKey> selectionKeyIterator = selector.selectedKeys().iterator();
@@ -40,9 +41,11 @@ public class ServerClass implements Runnable {
                     SelectionKey key = selectionKeyIterator.next();
                     selectionKeyIterator.remove();
                     if (key.isValid()) {
+                        //目的是让服务端Socket,去接收客户端Socket请求
                         if (key.isAcceptable()) {
                             this.accept(key);
                         }
+                        //读取客户端Socket Channel里的数据
                         if (key.isReadable()) {
                             this.read(key);
                         }
