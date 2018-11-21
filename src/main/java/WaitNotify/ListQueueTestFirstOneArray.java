@@ -6,14 +6,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by duanzx on 2018/5/11.
  */
-public class ListQueueTestFirstOne {
+public class ListQueueTestFirstOneArray {
     private final LinkedList<Object> list = new LinkedList<Object>();
     private final int MIN_SIZE = 0;
     private final int MAX_SIZE;
     private AtomicInteger atomicInteger = new AtomicInteger(0);
     private final Object lock = new Object();
 
-    public ListQueueTestFirstOne(int maxSize) {
+    public ListQueueTestFirstOneArray(int maxSize) {
         this.MAX_SIZE = maxSize;
     }
 
@@ -48,7 +48,7 @@ public class ListQueueTestFirstOne {
     }
 
     public static void main(String[] args) throws Exception {
-        final ListQueueTestFirstOne listQueueTest = new ListQueueTestFirstOne(5);
+        final ListQueueTestFirstOneArray listQueueTest = new ListQueueTestFirstOneArray(5);
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
