@@ -5,5 +5,5 @@ package multiThread.obserable;
  * */
 @FunctionalInterface
 public interface Task<T> {
-    T cal();
+    T call();
 }
