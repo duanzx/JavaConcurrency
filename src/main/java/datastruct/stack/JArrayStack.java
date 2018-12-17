@@ -1,36 +1,36 @@
 package datastruct.stack;
 
 /*
- * Java版顺序存储的栈实现
+ * Java版顺序存储的栈实现，每次取都取数组的尾部元素
  * */
 public class JArrayStack {
     private final Object[] items;
-    private int count;//当前数组内的有效元素个数
+    private int tail;//当前数组内的有效元素个数
     private int n;//数组元素的总空间大小
 
     public JArrayStack(int n) {
         items = new Object[n];
         this.n = n;
-        this.count = 0;
+        this.tail = 0;
     }
 
     public boolean push(Object item) {
         //如果栈里的元素已经满了，不需要入栈
-        if (count == n) {
+        if (tail == n) {
             return false;
         }
-        items[count] = item;
-        count++;
+        items[tail] = item;
+        tail++;
         return true;
     }
 
     public Object pop() {
         //如果栈里的元素已经满了，不需要入栈
-        if (count == 0) {
+        if (tail == 0) {
             return null;
         }
-        count--;
-        Object item = items[count];
+        tail--;
+        Object item = items[tail];
         return item;
     }
 
@@ -44,7 +44,7 @@ public class JArrayStack {
                 System.out.println(String.format("%d can push ", x));
             }
         }
-        System.out.println("count = " + jArrayStack.count);
+        System.out.println("count = " + jArrayStack.tail);
         for (int x = 0; x < 12; x++) {
             Object item = jArrayStack.pop();
             if (null == item) {
@@ -53,7 +53,7 @@ public class JArrayStack {
                 System.out.println(String.format("%d can pop %d", x, item));
             }
         }
-        System.out.println("count = " + jArrayStack.count);
+        System.out.println("count = " + jArrayStack.tail);
 
     }
 }
