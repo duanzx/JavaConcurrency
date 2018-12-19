@@ -24,7 +24,16 @@ public class JArrayQueue {
      */
     public boolean enqueue(Object item) {
         if (tail == size) {
-            return false;
+            //如果head = 0,说明没有执行过出队操作
+            if (head == 0) {
+                return false;
+            }
+            //3 4 5 6  ->  1 2 3 4
+            for (int i = head; i < (tail + 1); i++) {
+                items[i - head] = items[i];
+            }
+            head = 0;
+            tail = tail - head;
         }
         items[tail] = item;
         tail++;
@@ -48,7 +57,7 @@ public class JArrayQueue {
             if (!flag) {
                 System.out.println(String.format("%d can not enqueue ", x));
             } else {
-                System.out.println(String.format("%d can enqueue ", x));
+                System.out.println(String.format("%d can enqueue ,head= %d, tail = %d", x, jArrayQueue.head, jArrayQueue.tail));
             }
         }
         System.out.println("count = " + jArrayQueue.tail);
