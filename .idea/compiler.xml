@@ -9,8 +9,5 @@
         <module name="javaconcurrency" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="javaconcurrency" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
