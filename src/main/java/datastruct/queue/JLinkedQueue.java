@@ -33,18 +33,7 @@ public class JLinkedQueue {
     }
 
 
-    /**
-     * @return
-     * @Title: poll
-     * @Description: 出队
-     */
-//    public T poll() {
-//        Node oldFront = front;
-//        front = front.next;
-//        oldFront.next = null;
-//        size--;
-//        return oldFront.data;
-//    }
+
     public Object dequeue() {
         if (head == null) {
             return null;
@@ -52,6 +41,7 @@ public class JLinkedQueue {
         Node node = head.next;
         Object item = head.item;
         head = node;
+        size--;
         return item;
     }
 
