@@ -1,3 +1,7 @@
+Executor并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是ExecutorService
+
+
+
 newCachedThreadPool:创建一个可以根据实际情况调整线程个数的线程池，不限制最大线程数量，如果有空闲的线程则执行任务，如果没有任务则不创建线程
 并且每一个空闲线程会在60秒后自动回收。
 public static ExecutorService newCachedThreadPool() {
