@@ -14,6 +14,5 @@ public interface BinNode {
     public void insertAsLc();
 
     //先序遍历，按照某种次序访问树中各个节点，每个节点被访问恰好一次
-    public void
 
 }
