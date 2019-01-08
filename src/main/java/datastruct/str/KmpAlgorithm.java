@@ -112,6 +112,7 @@ public class KmpAlgorithm {
     @Test
     public  void  getPMT(){
         String str = "ABABAB";//PMT = 3,
+        str = "ABCBA";//PMT = 3,
         char[] arr = str.toCharArray();
         int[] next = new int[arr.length]; //next 数组各值的含义：代表当前字符之前的字符串中，有多大长度的相同前缀后缀
         next[0] = -1;//表示不存在相同的前后缀
