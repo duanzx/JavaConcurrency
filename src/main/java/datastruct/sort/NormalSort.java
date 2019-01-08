@@ -39,7 +39,7 @@ public class NormalSort {
             if(j == -1 || arr[i] == arr[j]){
                 ++j;
                 ++i;
-                arr[i] = j;//计数器初始化
+                arr[i] = j;//计数器赋值(初始化，递增)
             }else{//开始下一次命中
                 j = -1;
             }
