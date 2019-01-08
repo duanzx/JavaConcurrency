@@ -4,6 +4,14 @@ import org.junit.Test;
 
 public class NormalSort {
 
+
+
+    @Test
+    public void testInsert(){
+        int[] arr = buildSource();
+
+    }
+
     @Test
     public void testBubble() {
         int[] arr = buildSource();
@@ -16,6 +24,7 @@ public class NormalSort {
                 }
             }
         }
+        printArr(arr);
     }
 
 
