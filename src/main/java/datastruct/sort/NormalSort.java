@@ -4,12 +4,48 @@ import org.junit.Test;
 
 public class NormalSort {
 
+    @Test
+    public void  testInsertSort(){
+        int[] arr = buildSource();
+        for(int i = 1;i<arr.length;i++){
+            if(arr[i-1] > arr[i]){
+                int temp = arr[i];
+                int j = i; // i i+1
+                while (j > 0 && arr[j -1] > temp){
+                    arr[j] = arr[j-1];
+                    j--;
+                }
+                arr[j] = temp;
+            }
+        }
+        printArr(arr);
+    }
 
 
     @Test
-    public void testInsert(){
-        int[] arr = buildSource();
-
+    public void testInsertArr() {
+        // 向已排序的数组 [1 2 4 5 6]中插入 3
+        int[] arr = new int[6];
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 4;
+        arr[3] = 5;
+        arr[4] = 6;
+        int target = 3;
+        //比较 a[0] < 3
+        for (int i = 0;i<5;i++) {
+            if (arr[i] > 3) {//a[2] > 3 重新排列 a[2] = 3 ,a[3] = 4 ,a[4] = 5 ,a[5] = 6 , arr[i+1] = arr[i], 在arr[i]后面的元素都后移一位
+                int temp = arr[i];
+                int j = arr.length-1;
+                while (j > i){
+                    arr[j] = arr[j-1];
+                    j--;
+                }
+                arr[i] = 3;
+                break;
+            }
+        }
+        printArr(arr);
     }
 
     @Test
