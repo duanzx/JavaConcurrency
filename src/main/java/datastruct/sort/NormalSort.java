@@ -5,6 +5,49 @@ import org.junit.Test;
 public class NormalSort {
 
     @Test
+    public void testKmp(){
+        String sourceStr = "SDGASDFGGSDASEWTRS";
+        String targetStr = "FGG";
+        System.out.println(sourceStr.indexOf(targetStr));
+        char[] sourceArr = sourceStr.toCharArray();
+        char[] targetArr = targetStr.toCharArray();
+        int[] nextArr = getNextArr(targetStr);
+        int i = 0;
+        int j = 0;
+        while (i < sourceArr.length && j < targetArr.length){
+            if(j == -1 || sourceArr[i] == targetArr[j]){
+                j++;
+                i++;
+                if (j == targetArr.length) {
+                    System.out.println("Index : " + (i-j)); //
+                }
+            }else{
+                j = nextArr[j];
+            }
+        }
+    }
+
+
+
+    public int[] getNextArr(String str ){
+        char[] strArr = str.toCharArray();
+        int[] arr = new int[strArr.length];
+        arr[0] = -1;
+        int i = 0;
+        int j = -1;
+        while (i < arr.length-1){
+            if(j == -1 || arr[i] == arr[j]){
+                ++j;
+                ++i;
+                arr[i] = j;//计数器初始化
+            }else{//开始下一次命中
+                j = -1;
+            }
+        }
+        return arr;
+    }
+
+    @Test
     public void  testInsertSort(){
         int[] arr = buildSource();
         for(int i = 1;i<arr.length;i++){
