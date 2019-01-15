@@ -82,5 +82,39 @@ public class ComplexTest {
         return minus1;
     }
 
+    /**
+     * 任意给定两个序列，求两个序列的最长公共子序列的长度
+     */
+    @Test
+    public void publicSubLength() {
+        String a = "123456";
+        String b = "23412356";
+        char[] arr = a.toCharArray();
+        char[] brr = b.toCharArray();
+        int[] pl = new int[a.length()];//记录以数组中每个元素开头的公共子序列长度
+        for (int i = 0; i < a.length(); i++) {
+            int aindex = i;
+            int acount = 0;
+            int j = -1;//brr的角标， -1代表是否从新开始遍历
+            while (aindex < arr.length && j < brr.length) {
+                if (j == -1 || arr[aindex] != brr[j]) {
+                    j++;
+                } else {
+                    aindex++;
+                    j++;
+                    acount++;
+                }
+            }
+            pl[i] = acount;
+        }
+        int maxlength = pl[0];
+        for (int i = 1; i < pl.length; i++) {
+            System.out.println(pl[i]);
+            if (maxlength < pl[i]) {
+                maxlength = pl[i];
+            }
+        }
+        System.out.println("最长公共子序列长度是：" + maxlength);
+    }
 
 }
