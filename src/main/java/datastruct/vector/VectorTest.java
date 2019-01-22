@@ -3,6 +3,45 @@ package datastruct.vector;
 import org.junit.Test;
 
 public class VectorTest {
+
+    @Test
+    /** >=start , < limit */
+    public void deleteRange(){
+        int[] sourceArr = initializerArray();
+        printArr(sourceArr);
+        int start = 2;
+        int limit = 4;
+        while (limit < sourceArr.length){
+            int temp = limit++;
+            sourceArr[start++] = sourceArr[temp];
+            sourceArr[temp] = 0;
+        }
+        printArr(sourceArr);
+    }
+
+    @Test
+    public void testInsertArray(){
+        int index = 2;
+        int obj = 20;
+        int[] sourceArr = initializerArray();
+        printArr(sourceArr);
+        int size = sourceArr.length;
+        sourceArr = increaseTimesArray(sourceArr);
+        printArr(sourceArr);
+        for(int i = size;i>index;i--){
+            sourceArr[i] = sourceArr[i-1];
+        }
+        sourceArr[index] = obj;
+        printArr(sourceArr);
+    }
+
+    public void printArr(int[] arr){
+        for(int i = 0;i<arr.length;i++){
+            System.out.print(arr[i]+" ,");
+        }
+        System.out.println(" ");
+    }
+
     /**以固定容量递增扩容*/
     @Test
     public void testIncreaseArray() {
@@ -47,7 +86,7 @@ public class VectorTest {
                 newArr[j] = 0;
             }
         }
-        System.out.print(newArr.length+",");
+       // System.out.print(newArr.length+",");
         return newArr;
     }
 
@@ -66,6 +105,6 @@ public class VectorTest {
     }
 
     public int[] initializerArray(){
-        return new int[]{1,4,2,5,3};
+        return new int[]{1,4,2,5,3,6};
     }
 }
