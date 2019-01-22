@@ -5,6 +5,69 @@ import org.junit.Test;
 public class VectorTest {
 
     @Test
+    public void testDuplicate(){
+        int[] sourceArr = new int[]{1,2,3,4,2,6,2,5};
+        printArr(sourceArr);
+//        System.out.println("Index :"+findByRange(sourceArr,1,0,4));
+        int i = 1;
+        while (i < sourceArr.length){
+            if(findByRange(sourceArr,sourceArr[i],0,i) != -1){
+                System.out.println("删除元素："+sourceArr[i]);
+                removeByRange(sourceArr,i,i+1);
+            }
+            i++;
+        }
+        printArr(sourceArr);
+    }
+
+    public void removeByRange(int[] sourceArr,int start,int limit){
+        while (limit < sourceArr.length){
+            int temp = limit++;
+            sourceArr[start++] = sourceArr[temp];
+            sourceArr[temp] = 0;
+        }
+    }
+
+    public int findByRange(int[] sourceArr,int target,int start,int limit){
+        while (start < limit--){
+            if(sourceArr[limit] == target){
+                return limit;
+            }
+        }
+        return -1;
+    }
+
+    @Test
+    public void testFindRange(){
+        int[] sourceArr = initializerArray();
+        printArr(sourceArr);
+        int target = 4;
+        int start = 2;
+        int limit = 5;
+        while (start < limit){
+            if(sourceArr[limit] == target){
+                System.out.println("Index : "+limit+", Data="+sourceArr[limit]);
+            }
+            limit--;
+        }
+    }
+
+    @Test
+    public void testFind(){
+        int[] sourceArr = initializerArray();
+        printArr(sourceArr);
+        int target = 6;
+        int i = sourceArr.length;
+        while (i > 0){
+            if(sourceArr[i-1] == target){
+                System.out.println("Index : "+ (i-1));
+                return;
+            }
+        }
+        System.out.println("Index : -1");
+    }
+
+    @Test
     /** >=start , < limit */
     public void deleteRange(){
         int[] sourceArr = initializerArray();
@@ -105,6 +168,6 @@ public class VectorTest {
     }
 
     public int[] initializerArray(){
-        return new int[]{1,4,2,5,3,6};
+        return new int[]{1,4,2,5,3,6,7};
     }
 }
