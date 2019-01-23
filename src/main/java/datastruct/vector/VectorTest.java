@@ -4,6 +4,93 @@ import org.junit.Test;
 
 public class VectorTest {
 
+    //二分查找算法
+    @Test
+    public void testFindBinary(){
+        System.out.println("Index:"+findBinary(0,8,54));
+    }
+
+    public int findBinary(int start,int limit,int obj){
+        int[] arr = new int[]{1,2,3,4,54,7,12,14,23,21,5};
+        while (start < limit){
+            int mi = (start+limit) >> 1;
+            if(obj < arr[mi]){
+                limit = mi;
+                continue;
+            }else if (arr[mi] < obj){
+                start = mi+1;
+                continue;
+            }
+            return mi;
+        }
+        return -1;
+    }
+
+    //返回相邻逆序对的的元素总数
+    @Test
+    public void testOrderDescCount(){
+        int[] arr = new int[]{1,2,4,3,2,1};
+        int n = 0;
+        int i = 1;
+        while (i < arr.length){
+            if(arr[i-1] > arr[i]){
+                n++;
+            }
+            i++;
+        }
+        System.out.println("相邻逆序对的总数是："+n);
+    }
+
+    @Test
+    public void testLoop(){
+        int[] arr = new int[6];
+        arr[0] = 1;
+        arr[2] = 2;
+        printArr(arr);
+    }
+
+    //筛选重复元素的低效算法,在有序向量中，重复的元素必然相互紧邻构成一个区间，因此每个区间只需保留单个元素即可
+    @Test
+    public void testDuplicateHard(){
+        //比较，如果第i个元素和第i+1个元素相等，则删除第i+1个元素，继续和下一个元素进行比较,如果不相等，则移动角标进行下一次比较
+        int[] arr = new int[]{1,1,1,1,1,1,1,2,2,2,2,2,3,3,3,3,4,4,4,5,5,5,5,5,6,6};
+        int i = 0;
+        while (i < arr.length-1 && arr[i] != 0){
+            if(arr[i] == arr[i+1]){
+                int start = i+1;
+                int limit = i+2;
+                while (limit < arr.length){
+                    int temp = limit++;
+                    arr[start++] = arr[temp];
+                    arr[temp] = 0;
+                }
+            }else {
+                i++;
+            }
+    }
+        printArr(arr);
+    }
+
+    //筛选重复元素的高效算法，同一元素可作为被删除元素的后继多次前移，若能以重复区间为单位，成批删除雷同元素，性能必能改进
+    @Test
+    public void testDuplicateEasy(){
+        int[] arr = new int[]{1,1,1,1,1,1,1,2,2,2,2,2,3,3,3,3,4,4,4,5,5,5,5,5,6,6};
+        int i = 0;
+        int j = 1;
+        while (j < arr.length){
+            if(arr[i] == arr[j]){
+                arr[j] = 0;
+                j++;
+            }else{
+                arr[i+1] = arr[j];
+                i++;
+            }
+        }
+        printArr(arr);
+    }
+
+    //二分查找算法
+
     @Test
     public void testDuplicate(){
         int[] sourceArr = new int[]{1,2,3,4,2,6,2,5};
