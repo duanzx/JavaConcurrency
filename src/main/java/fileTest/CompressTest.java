@@ -28,7 +28,6 @@ public class CompressTest {
         InputStream inputStream = null;
         try {
             archiveOutputStream = new ZipArchiveOutputStream(new FileOutputStream(tarFile));
-            ZipFile zipFile = new ZipFile(tarFile.toPath().toString());
             ArchiveEntry entry = archiveOutputStream.createArchiveEntry(sourceFile, sourceFile.getName());
             archiveOutputStream.putArchiveEntry(entry);
             inputStream = Files.newInputStream(sourceFile.toPath());
@@ -44,12 +43,13 @@ public class CompressTest {
 
     @Test
     public void test() throws Exception {
-        Path paths = Paths.get("D:\\docatm", "aa.txt");
-        File sourceFile = paths.toFile();
-        if (!sourceFile.exists()) {
-            sourceFile.createNewFile();
+        for (int x = 1; x < 6; x++) {
+            Path paths = Paths.get("D:\\docatm", String.valueOf(x));
+            for (File sourceFile : paths.toFile().listFiles()) {
+                testCompressFile("D:\\docatm\\" + String.valueOf(x), sourceFile);
+                System.out.println("已压缩文件 ：" + x + "下的子文件：" + sourceFile.getName());
+            }
         }
-        testCompressFile("D:\\docatm", sourceFile);
 
 //        for(File parentFile : paths.toFile().listFiles()){
 //            File[] subFiles = parentFile.listFiles();

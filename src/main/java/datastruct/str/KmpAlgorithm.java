@@ -42,7 +42,8 @@ public class KmpAlgorithm {
      *在主字符串"ababababca"中查找模式字符串"abababca"。
      * 如果在 j 处字符不匹配，那么由于前边所说的模式字符串 PMT 的性质，主字符串中 i 指针之前的 PMT[j −1] 位就一定与模式字符串的第 0 位至第 PMT[j−1] 位是相同的。
      *在 i 处失配，那么主字符串和模式字符串的前边4位就是相同的。
-     * 又因为模式字符串的前4位，它的前3位前缀和后3位后缀是相同的，所以我们推知主字符串i之前的3位和模式字符串开头的3位是相同的。这部分就不用再比较了。
+     * 又因为模式字符串的前4位，它的前3位前缀和后3位后缀是相同的，
+     * 所以我们推知主字符串i之前的3位和模式字符串开头的3位是相同的。这部分就不用再比较了。
      *
      *
      * 使用PMT加速字符串的查找。我们看到如果是在 j 位 失配，
@@ -185,7 +186,30 @@ public class KmpAlgorithm {
         System.out.println(str.lastIndexOf(sub));
     }
 
-    public int[]  getKMPArr(String str){
+    @Test
+    public void getabab() {
+        getKMPArr("abab");
+    }
+
+    public int[] getKmpArr1(String str) {
+        char[] arr = str.toCharArray();
+        int[] next = new int[arr.length];
+        next[0] = -1;
+        int j = 1;//后缀从首字符后面开始
+        for (int i = 0; i < arr.length - 1; i++) { //前缀从0开始依次比较
+            for (; j < arr.length; ) {
+                if (arr[i] == arr[j]) {
+                    //此时i++ , j++
+                } else {
+                    //此时i不变，j++
+                }
+            }
+            //当循环结束后，都没匹配到，此时i要++
+        }
+        return next;
+    }
+
+    public int[] getKMPArr(String str) { //next数组存储的是要移动的元素的角标，不是
         char[] arr = str.toCharArray();
         int[] next = new int[arr.length]; //next 数组各值的含义：代表当前字符之前的字符串中，有多大长度的相同前缀后缀
         next[0] = -1;//表示不存在相同的前后缀
